@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <style>
+        video::-webkit-media-controls-timeline {
+            display: none;
+        }
+        .video-wrapper{
+            width: 300px;
+            height: 250px;
+            position: relative;
+            font-family: Arial;
+            background:#000;
+        }
+        .read-more-vid{
+            width: 100%;
+            height: 250px;
+            background: #000000bd;
+            position: absolute;
+            z-index: 9;
+            display: none;
+            color:#fff;
+        }
+        .read-more-vid a {
+            font-size: 24px;
+            font-weight: 500;
+            text-align: center;
+            display: block;
+            margin-top: 33%;
+            color:#fff;
+            text-decoration: none;
+        }
+        .replay-btn {
+            position: absolute;
+            right: 8px;
+            bottom: 6px;
+            font-size:9px;
+            cursor: pointer;
+            display: flex;
+        }
+        .replay-btn span{text-decoration: underline;font-size:12px;padding: 0 6px;}
+        .know-more {
+            background: #000000bd;
+            display: inline-block;
+            position: absolute;
+            color: #fff;
+            padding: 8px 30px;
+            font-size: 14px;
+            bottom: 39px;
+            right: 0;
+            z-index: 9;
+            text-decoration: none;
+            border: solid 1px #464646;
+        }
+        .replay{font-size:14px}
+    </style>
+    </head>
+<body>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.0.0/alt/video-js-cdn.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.0.0/video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+
+<div class="video-wrapper">
+    <div class="read-more-vid" id="read-more">
+        <a href="%%CLICK_URL_ESC%%https://bs.serving-sys.com/Serving/adServer.bs?cn=trd&pli=1076940648&gdpr=${GDPR}&gdpr_consent=${GDPR_CONSENT_68}&adid=1084411184&ord=%%CACHEBUSTER%%" target="_blank">Visit Store</a>
+        <span id="replay" class="replay-btn"><span>Replay</span>  <i class="material-icons replay">&#xe042;</i></span>
+    </div>
+    <a href="%%CLICK_URL_ESC%%https://bs.serving-sys.com/Serving/adServer.bs?cn=trd&pli=1076940648&gdpr=${GDPR}&gdpr_consent=${GDPR_CONSENT_68}&adid=1084411184&ord=%%CACHEBUSTER%%" target="_blank" id="onscreen-btn" class="know-more">Visit Store</a>
+    <video playsinline id="my_video_1" autoplay  class="video-js vjs-default-skin vjs-big-play-centered"
+           controls preload="auto" width="300" height="250"  muted="true">
+           <source src="https://d3j7kb8sfcbzqz.cloudfront.net/video/iphone11-night-mode-30sec-english-480.m3u8" type='application/x-mpegURL'>
+    </video>
+
+</div>
+<img src="https://secure-gl.imrworldwide.com/cgi-bin/m?ca=nlsn293808&cr=crtve&ce=91mobiles&pc=91mobiles_plc0012&ci=nlsnci1629&am=3&at=view&rt=banner&st=image&cy=2&r=%%CACHEBUSTER%%" style="display:none"/>
+<IMG SRC="https://bs.serving-sys.com/Serving/adServer.bs?cn=display&c=19&pli=1076940648&gdpr=${GDPR}&gdpr_consent=${GDPR_CONSENT_68}&adid=1084411184&ord=%%CACHEBUSTER%%" BORDER="0" HEIGHT="1" WIDTH="1" ALT="Advertisement">
+
+</body>
+</html>
+<script>
+    document.getElementById('replay').addEventListener("click",function(){
+        document.getElementById('read-more').style.display = 'none';
+        document.getElementById('onscreen-btn').style.display = 'block';
+        vid.currentTime = 0;
+        vid.play();
+    })
+
+    videojs("my_video_1", { controlBar: {
+            playToggle: false,
+            captionsButton: false,
+            chaptersButton: false,
+            subtitlesButton: false,
+            remainingTimeDisplay: false,
+            progressControl: {
+                seekBar: true,
+            },
+            fullscreenToggle: false,
+            playbackRateMenuButton: false,
+        }}, function(){
+        // Store the video object
+        var myPlayer = this, id = myPlayer.id();
+        this.on("ended", function(){ 
+            document.getElementById('read-more').style.display = 'block';
+            document.getElementById('onscreen-btn').style.display = 'none';
+            console.log("event fired");
+            });
+        myPlayer.controlBar.progressControl.disable();
+    });
+
+</script>
